@@ -11,7 +11,7 @@ let facedown;
 
 window.onload = function(){
     makeDeck();
-    shuffleDeck(deck);
+    shuffleDeck();
     getStarted();
 }
 
@@ -23,10 +23,10 @@ function makeDeck(){
         for (let j=0; j<values.length; j++){
         deck.push(values[j] + "-" + suites[i]);
         } 
-   } 
+    } 
 }
 
-function shuffleDeck(card){ 
+function shuffleDeck(){ 
     for (let i=0; i<deck.length; i++){
         const j = Math.floor(Math.random()* deck.length);
         let temp = deck[i];
@@ -39,7 +39,7 @@ function getStarted(){
     facedown = deck.pop();
     dealerSum += cardValue(facedown);
     dealerAces += isAce(facedown);
-   while (dealerSum < 17 ){ 
+    while (dealerSum < 17 ){ 
         let cardImg = document.createElement("img");
         let card = deck.pop();
         cardImg.src = "./cards/" + card + ".png";          
@@ -54,27 +54,52 @@ function getStarted(){
         playerSum += cardValue(card);
         playerAces += isAce(card);
         document.getElementById("playerCards").append(cardImg);
+    }
+    document.getElementById("hit").addEventListener("click", hit);
+    document.getElementById("stay").addEventListener("click", stay);
 }
-}
-
-document.getElementById("hit").addEventListener("click", hit);
 
 function hit(){
     if (!hitYes){
         return;
     } 
-    let cardImg = document.createElement("img");
-    let card = deck.pop();
-    cardImg.src = "./cards/" + card + ".png";
-    playerSum += cardValue(card);
-    playerAces += isAce(card);        
-    document.getElementById("playerCards").append(cardImg);
-    if (reduceAce(playerSum, playerAces) > 21){
-        hitYes = false;
+        let cardImg = document.createElement("img");
+        let card = deck.pop();
+        cardImg.src = "./cards/" + card + ".png";
+        playerSum += cardValue(card);
+        playerAces += isAce(card);        
+        document.getElementById("playerCards").append(cardImg);
+    if(reduceAce(playerSum, playerAces) > 21){
+            hitYes = false;
     }
-  }
+}
 
-document.getElementById("stay").addEventListener("click", stay);
+
+function cardValue(card){
+    let data = card.split("-");
+    let value = data[0];
+    if (isNaN(value)){
+        if(value == "A"){
+        return 11;
+        }
+        return 10;
+    }
+    return parseInt(value);
+}
+function isAce(card){
+    if(card[0] == "A"){
+        return 1;
+    }  
+     return 0;
+}
+
+function reduceAce(playerSum, playerAces){
+    while(playerSum > 21 && playerAces > 0){
+        playerSum -= 10;
+        playerAces -= 1;
+    }
+    return playerSum;
+}
 
 function stay(){
     dealerSum = reduceAce(dealerSum, dealerAces);
@@ -101,32 +126,9 @@ function stay(){
     }
 
     
-function reduceAce(playerSum, playerAces){
-    while(playerSum>21 && playerAces > 0){
-        playerSum -= 10;
-        playerAces -= 1;
-    }
-    return playerSum;
-}
 
-function cardValue(card){
-    let data = card.split("-");
-    let value = data[0];
-    if (isNaN(value)){
-        if(value == "A"){
-        return 11;
-        }
-        return 10;
-    }
-    return parseInt(value);
-}
 
-function isAce(card){
-    if(card[0] == "A"){
-        return 1;
-    }  
-     return 0;
-}
+
 
    
 

@@ -18,16 +18,15 @@ header{
 }
 
 
-h1{    
-    text-align:center;
+h1{  
+    text-align: center;
     text-shadow:2px 2px crimson;
     color:black;
     font-weight: 900;
     font-size: 2rem;
     padding:.2%,.1%;
-    margin-right:40%;
-    margin-left: 40%;
     margin-top:2%;
+    
 }
 #stay{
     padding:12px 42px;
@@ -62,11 +61,6 @@ h1{
     background-color: crimson;
     
 }
-.rules {
-    max-width: 350px;
-    font: size 4%;;
-    text-align:center;
- }
 
 .rules p{
     max-width:350px;
@@ -83,13 +77,12 @@ h1{
     height: 160px;
     width:110px;
     margin:2px;
-}
+    }
 img{
     height: 160px;
     width:110px;
     margin:2px;
 }
-
 
 .dealerTotal{
     font-family:cursive;
@@ -109,7 +102,7 @@ img{
     height: 160px;
     width:110px;
     margin:2px;
-}
+    }
 
 .playerTotal{
     font-family:cursive;
@@ -118,3 +111,20 @@ img{
     margin:10px;
 }
  
+@media(max-width:400px){
+   .dealerCards img{
+    height:110px;
+    width:60px;
+    margin:1px;
+    } 
+    #playerCards img{
+    height:110px;
+    width:60px;
+    margin:1px;
+    }
+    img{
+    height:110px;
+    width:60px;
+    margin:1px;
+}
+}
