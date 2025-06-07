@@ -9,33 +9,26 @@
 </head>
 <body>
     <Header role="banner">
-        <a href="#rules"><button class="rulesbtn">Click to read the rules.</button></a>
+        <a href="#rules"><button class="rulesbtn">Read Rules.</button></a>
         <h1>BlackJack</h1>
-        
+        <h3 id="win"></h3>
     </Header>
     <main role="main" >
     <Div class="container">
         <div class="row">
-            <h3 id="win"><h3>
             <h2  id="dealerTitle">Dealers Cards</h2>
-        </div>
             <div id="dealerCards">
                 <img id="facedown" src="./cards/BACK.png">
             </div> 
-        <div>   
             <h4 class="dealerTotal">Total of Dealer's Cards:<span id="dealerSum"></span></h4>
-        </div> 
-        <div>
             <h2 id="playerTitle">Player Cards</h2>
             <div id="playerCards"></div>
-        </div>
-        <div>
             <h4 class="playerTotal">Total of Player's Cards:<span id="playerSum" ></span></h4>
         </div>
+           
         <div >
             <button id="hit">HIT</button>
             <button id="stay">STAY</button>
-                
         </div>
     </Div>   
     <Div class="rulecontainer"> 
